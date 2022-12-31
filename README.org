@@ -7,7 +7,7 @@ Sweet is a stack based calculator inspired by the HP 48-50 Series of caluclators
 - [X] Simple arithmetic
 - [X] Multiple bases
 - [X] Strings
-- [ ] Arrays
-  - [ ] Matrices
+- [X] Arrays
+- [ ] Matrices
 - [ ] Lists
-  - [ ] Parallel processing with lists
+- [ ] Parallel processing with lists
