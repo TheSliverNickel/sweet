@@ -1,7 +1,7 @@
 use std::io;
 
-pub mod types;
 mod parser;
+pub mod types;
 
 fn main() {
     let mut stack: Vec<types::Element> = Vec::new();

@@ -3,7 +3,8 @@ use std::fmt::Display;
 pub enum Element {
     Number(f64),
     String(String),
-    BaseN(i64, i8),
+    BaseN(usize, i8),
+    Array { arr: Box<[f64]>, len: u8 },
 }
 
 impl Display for Element {
@@ -17,8 +18,28 @@ impl Display for Element {
             Element::BaseN(i, 10) => write!(f, "#{}d", i),
             Element::BaseN(i, 16) => write!(f, "#{:x}h", i),
             Element::BaseN(_, _) => write!(f, "Something has gone wrong!"),
-	    // Ideally other bases would be caught in parsing.
+            // Ideally other bases would be caught in parsing.
+            Element::Array { arr, len: _ } => {
+                let mut str = "[ ".to_string();
+
+                for i in arr.into_iter() {
+                    str.push_str(&i.to_string());
+                    str.push_str(" ");
+                }
+
+                str.push_str("]");
+                write!(f, "{}", str)
+            }
         }
+    }
+}
+
+impl Element {
+    pub fn isnum(&self) -> bool {
+        return match self {
+            Element::Number(_) => true,
+            _ => false,
+        };
     }
 }
 
